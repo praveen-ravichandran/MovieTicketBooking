@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<annotation-driven />
+	
+	<!-- Configure to plugin JSON as request and response in method handler -->
+	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<beans:property name="messageConverters">
+			<beans:list>
+				<beans:ref bean="jsonMessageConverter"/>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- Configure bean to convert JSON to POJO and vice versa -->
+	<beans:bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></beans:bean>	
+	
+	<beans:bean id="ticketConfirmationWorker" class="com.ticketbooking.bookingconfirmationbroker.worker.TicketConfirmationWorker"></beans:bean>	
+	
+	<beans:bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"></beans:property>
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/movie_ticket_booking_db"></beans:property>
+		<beans:property name="username" value="root"></beans:property>
+		<beans:property name="password" value=""></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
+		<beans:property name="dataSource" ref="ds"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="ticketWorkerDao" class="com.ticketbooking.bookingconfirmationbroker.dao.TicketWorkerDao">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="ticketBookingBusiness" class="com.ticketbooking.bookingconfirmationbroker.business.TicketWorkerBusiness"></beans:bean>
+	
+	<context:component-scan base-package="com.ticketbooking.bookingconfirmationbroker" />
+	
+</beans:beans>
