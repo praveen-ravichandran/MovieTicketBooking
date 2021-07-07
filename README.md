@@ -52,7 +52,6 @@ API | Method
 
 ```
 {
-  "userMail": <email-id>,
   "movieShowId": <movie-show-id>,
   "seats": <array-of-seat-ids-pertaining-to-theatre-hall-and-hall-class>
 }
