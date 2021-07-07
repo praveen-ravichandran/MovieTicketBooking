@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BookTicketModel {
 	
-	private String userMail;
+	private int userId;
 	
 	private int movieShowId;
 	
@@ -12,12 +12,12 @@ public class BookTicketModel {
 	
 	private List<Integer> seats;
 
-	public String getUserMail() {
-		return userMail;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUserMail(String userMail) {
-		this.userMail = userMail;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public int getMovieShowId() {

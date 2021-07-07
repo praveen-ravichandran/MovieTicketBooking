@@ -2,6 +2,7 @@ package com.ticketbooking.movieticketbooking.constant;
 
 public class Constants {
 	
+	public static final String GET_AVAILABLE_SEATS_API = "/api/movieshow/{movieShowId}/seatsavailable";
 	public static final String BOOK_TICKET_API = "/api/ticket/book";
 	
 	public static final String MSG_SEAT_NOT_AVAILABLE_CODE = "MSG_SEAT_NOT_AVAILABLE";

@@ -1,10 +1,10 @@
-package com.ticketbooking.movieticketbooking.model;
+package com.ticketbooking.common;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ticketbooking.movieticketbooking.model.error.ResponseErrorModel;
-import com.ticketbooking.movieticketbooking.model.error.ResponseMessageModel;
+import com.ticketbooking.common.error.ResponseErrorModel;
+import com.ticketbooking.common.error.ResponseMessageModel;
 
 public class ResponseBase {
 

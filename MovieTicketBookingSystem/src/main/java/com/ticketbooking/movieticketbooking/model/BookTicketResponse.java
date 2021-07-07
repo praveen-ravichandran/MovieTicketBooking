@@ -1,6 +1,7 @@
 package com.ticketbooking.movieticketbooking.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.ticketbooking.common.ResponseBase;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BookTicketResponse extends ResponseBase {

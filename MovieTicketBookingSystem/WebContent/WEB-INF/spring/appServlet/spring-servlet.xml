@@ -39,6 +39,12 @@
 		
 	<beans:bean id="ticketBookingBusiness" class="com.ticketbooking.movieticketbooking.business.TicketBookingBusiness"></beans:bean>
 	
-	<context:component-scan base-package="com.ticketbooking.movieticketbooking.controller" />
+	<beans:bean id="userDao" class="com.ticketbooking.user.dao.UserDao">
+		<beans:property name="template" ref="jt"></beans:property>
+	</beans:bean>
 	
+	<beans:bean id="userBusiness" class="com.ticketbooking.user.business.UserBusiness"></beans:bean>
+	
+	<context:component-scan base-package="com.ticketbooking.movieticketbooking.controller, com.ticketbooking.user.controller" />
+    
 </beans:beans>

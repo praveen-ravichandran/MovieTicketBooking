@@ -1,4 +1,4 @@
-package com.ticketbooking.movieticketbooking.model.error;
+package com.ticketbooking.common.error;
 
 public class ResponseMessageModel {
 

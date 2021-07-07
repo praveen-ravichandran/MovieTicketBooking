@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ticketbooking.movieticketbooking.dao.TicketBookingDao;
 import com.ticketbooking.movieticketbooking.model.BookTicketModel;
+import com.ticketbooking.movieticketbooking.model.GetAvailableSeatsResponse;
 
 public class TicketBookingBusiness {
 	
@@ -24,13 +25,18 @@ public class TicketBookingBusiness {
 		if(ticket.getMovieShowId() <= 0) {
 			return false;
 		}
-		if(ticket.getUserMail() == null || ticket.getUserMail().isEmpty()) {
-			return false;
-		}
 		if(ticket.getSeats() == null || ticket.getSeats().size() == 0 || ticket.getSeats().size() > 6) {
 			return false;
 		}
 		return true;
+	}
+
+	public GetAvailableSeatsResponse getAvailableSeats(int movieShowId) {
+		GetAvailableSeatsResponse getAvailableSeatsResponse = new GetAvailableSeatsResponse();
+		getAvailableSeatsResponse.setMovieShowId(movieShowId);
+		getAvailableSeatsResponse.setAvailableSeats(ticketBookingDao.getAvailableSeatsForMovieShow(movieShowId));
+		getAvailableSeatsResponse.setTheatreHallClasses(ticketBookingDao.getClassForMovieShow(movieShowId));
+		return getAvailableSeatsResponse;
 	}
 
 }
