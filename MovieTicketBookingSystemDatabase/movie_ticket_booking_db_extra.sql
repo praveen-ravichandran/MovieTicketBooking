@@ -78,7 +78,8 @@ ALTER TABLE `theatre_hall_type`
 ALTER TABLE `ticket_booking`
   ADD PRIMARY KEY (`booking_id`),
   ADD KEY `fk_ticket_booking_movie_show_id_movie_show_show_id` (`movie_show_id`),
-  ADD KEY `fk_ticket_booking_ticket_status_id_ticket_status_status_id` (`ticket_status_id`);
+  ADD KEY `fk_ticket_booking_ticket_status_id_ticket_status_status_id` (`ticket_status_id`),
+  ADD KEY `fk_ticket_booking_user_id_user_user_id` (`user_id`);
 
 --
 -- Indexes for table `ticket_booking_seat`
@@ -93,6 +94,13 @@ ALTER TABLE `ticket_booking_seat`
 --
 ALTER TABLE `ticket_status`
   ADD PRIMARY KEY (`status_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email_address` (`email_address`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -177,6 +185,12 @@ ALTER TABLE `ticket_status`
   MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -229,7 +243,8 @@ ALTER TABLE `theatre_hall_seat`
 --
 ALTER TABLE `ticket_booking`
   ADD CONSTRAINT `fk_ticket_booking_movie_show_id_movie_show_show_id` FOREIGN KEY (`movie_show_id`) REFERENCES `movie_show` (`show_id`),
-  ADD CONSTRAINT `fk_ticket_booking_ticket_status_id_ticket_status_status_id` FOREIGN KEY (`ticket_status_id`) REFERENCES `ticket_status` (`status_id`);
+  ADD CONSTRAINT `fk_ticket_booking_ticket_status_id_ticket_status_status_id` FOREIGN KEY (`ticket_status_id`) REFERENCES `ticket_status` (`status_id`),
+  ADD CONSTRAINT `fk_ticket_booking_user_id_user_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `ticket_booking_seat`
