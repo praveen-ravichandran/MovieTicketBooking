@@ -10,6 +10,32 @@ There are two main components of the system,
 
 ## MovieTicketBookingSystem [🔗](./MovieTicketBookingSystem)
 
+#### User SignIn API
+
+The SignIn API request checks the credentials provided and in response provides a JWT Token for further API call authorization.
+
+API | Method
+----|-------
+/api/user/signin | POST
+
+##### Request JSON Body:
+
+```
+{
+  "userName": <user-mail-id-registered>,
+  "password": <user-password>
+}
+```
+#### Movie Show Seat Availablity API
+
+The Seat Availablity API lists the available seats for a particular movie show with the seats price and the Theatre's Hall Class details.
+
+API | Method
+----|-------
+/api/movieshow/{movieShowId}/seatsavailable | GET
+
+*Token Authorization is not required for this API*
+
 #### Ticket Booking API
 
 The booking API checks for the availability of the seats based on the criteria for a particular movie show and books the ticket.
@@ -30,6 +56,13 @@ API | Method
   "movieShowId": <movie-show-id>,
   "seats": <array-of-seat-ids-pertaining-to-theatre-hall-and-hall-class>
 }
+```
+
+The Ticket Booking API is protected by the JWT Token based Authentication.
+The Token has to be added in the header section of the request.
+
+```
+Authorization: Bearer <token>
 ```
 
 ##### Response on Successful Ticket Blocking:
