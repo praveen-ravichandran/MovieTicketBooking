@@ -7,6 +7,13 @@ There are two main components of the system,
  - A Ticket Booking System
  - A Ticket Confirmation System
 ```
+#### Tools Used
+
+- JMeter (To simulate concurrent bookings)
+
+## Database Structure
+
+![Database Structure /MovieTicketBookingSystemDatabase/db_table_structure.png](./MovieTicketBookingSystemDatabase/db_table_structure.png)
 
 ## MovieTicketBookingSystem [🔗](./MovieTicketBookingSystem)
 
